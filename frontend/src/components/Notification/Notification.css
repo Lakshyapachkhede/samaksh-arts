@@ -1,0 +1,40 @@
+.notification{
+    background-color:#4CAF50;
+    width: 350px;
+    position: fixed;
+    bottom: 20px;
+    left: -100%;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid white;
+    transition: left 0.4s ease;
+    z-index: 1000;
+    font-weight: 500;
+}
+
+.info{
+    background-color: #2196F3;
+}
+.success{
+    background-color: #4CAF50;
+}
+.warning{
+    background-color: #FF9800;
+}
+.error{
+    background-color:#F44336;
+}
+.neutral{
+    background-color:#2D2D2D;
+}
+
+
+.notification.show {
+  left: 20px;
+}
+
+.notification.hide {
+  left: -400px;
+}

@@ -105,3 +105,12 @@
     right: 15px;
     z-index: 130;
 }
+
+
+@media only screen and (max-width:800px) {
+
+    .gallery ul{
+        padding: 20px;
+    }
+    
+}

@@ -1,0 +1,13 @@
+form{
+    max-width: 600px;
+    margin: auto;
+}
+
+h1{
+    font-family: "Abel";
+}
+
+.form-top{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}

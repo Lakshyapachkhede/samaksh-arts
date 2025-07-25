@@ -42,24 +42,24 @@ export const Gallery = () => {
 
   return (
     <><div className="gallery">
-    
+
       {selectedImage !== null && (
-        
+
         <>
 
-        <div className="img-full-con">
-        <div className="blur-overlay"></div>
+          <div className="img-full-con">
+            <div className="blur-overlay"></div>
 
-          <div className="close-btn" onClick={closeImage}><i className="fa-solid fa-xmark fa-2x" style={{color: "#ffffff"}}></i></div>
-          <div className="img-full-con-wrap">
-          <img src={selectedImage} className='img-full'/>
+            <div className="close-btn" onClick={closeImage}><i className="fa-solid fa-xmark fa-2x" style={{ color: "#ffffff" }}></i></div>
+            <div className="img-full-con-wrap">
+              <img src={selectedImage} className='img-full' />
 
 
+            </div>
           </div>
-        </div>
         </>
-    
-    )}
+
+      )}
 
 
 
@@ -69,7 +69,7 @@ export const Gallery = () => {
       <ul>
         {paintings.map(painting => {
           return (<li key={painting._id}>
-            <img src={painting.imageUrl} alt={painting.title} onClick={()=>handleImageClick(painting.imageUrl)}/>
+            <img src={painting.imageUrl} alt={painting.title} onClick={() => handleImageClick(painting.imageUrl)} />
           </li>);
         })}
       </ul>
