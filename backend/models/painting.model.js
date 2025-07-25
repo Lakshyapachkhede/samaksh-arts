@@ -9,6 +9,9 @@ const paintingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    imageId: {
+        type: String,
+    },
     height: {
         type: Number,
     },

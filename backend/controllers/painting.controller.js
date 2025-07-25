@@ -1,4 +1,6 @@
 const Painting = require("../models/painting.model");
+const cloudinary = require('../config/cloudinary.config');
+
 
 // GET /api/v1/paintings
 async function getAllPaintings(req, res) {
@@ -31,6 +33,7 @@ async function createPainting(req, res) {
         const newPainting = new Painting({
             title,
             imageUrl: req.file.path,
+            imageId: req.file.filename,
             height,
             width,
             unit,
@@ -38,11 +41,12 @@ async function createPainting(req, res) {
             price,
             isAvailable
         });
-
+        
+     
         await newPainting.save();
-        return res.status(200).json(newPainting);
+        return res.status(201).json(newPainting);
     } catch (err) {
-        if (err.name = "ValidationError") {
+        if (err.name === "ValidationError") {
             return res.status(400).json({ error: err.message });
         }
 
@@ -61,6 +65,14 @@ async function updatePainting(req, res) {
 
         if (req.file){
             updatedData.imageUrl = req.file.path;
+            updatedData.imageId = req.file.filename;
+            
+            const existingPainting = await Painting.findById(req.params.id);
+            if(existingPainting?.imageId){
+
+                await cloudinary.uploader.destroy(existingPainting.imageId);
+            }
+
         }
         const updatedPainting = await Painting.findByIdAndUpdate(
             req.params.id,
@@ -79,10 +91,17 @@ async function updatePainting(req, res) {
 // DELETE /api/v1/paintings/:id
 async function deletePainting(req, res) {
     try {
-        const deleted = await Painting.findByIdAndDelete(req.params.id);
-        if (!deleted) return res.status(404).json({ error: "Painting not found" });
+        const painting = await Painting.findById(req.params.id);
+        if (!painting) return res.status(404).json({ error: "Painting not found" });
+        
+        if(painting.imageId){
+            await cloudinary.uploader.destroy(painting.imageId);
+
+        }
+        await painting.deleteOne();
         return res.status(200).json({ message: "Painting deleted successfully" });
-    } catch {
+    } catch(err) {
+        console.log(err);
         return res.status(500).json({ error: "Server Error at deletePainting" });
     }
 }

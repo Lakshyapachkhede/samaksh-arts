@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const paintingRouter = require("./routes/painting.router");
+const kitRouter = require('./routes/kit.router');
+const contactRouter = require('./routes/contact.router');
 const authRouter = require("./routes/auth.router");
 const {connectMongoDb} = require('./config/mongoConnection.config');
 
@@ -17,6 +19,8 @@ const PORT = process.env.PORT;
 
 
 app.use("/api/v1/paintings/", paintingRouter);
+app.use("/api/v1/kit/", kitRouter);
+app.use('/api/v1/contact/', contactRouter);
 app.use("/auth", authRouter);
 
 
