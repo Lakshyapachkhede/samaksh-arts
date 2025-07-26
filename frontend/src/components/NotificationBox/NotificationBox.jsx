@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import './Notification.css';
+import './NotificationBox.css';
 
-export default function Notification({
+export default function NotificationBox({
   type = 'info',
   message,
 }) {
@@ -18,7 +18,7 @@ export default function Notification({
       onClick={() => setVisible(false)}
     >
       <p>{message}</p>
-      <i class="fa-solid fa-xmark"></i>
+      <i className="fa-solid fa-xmark"></i>
 
     </div>
   )

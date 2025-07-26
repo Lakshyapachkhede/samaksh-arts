@@ -1,0 +1,32 @@
+.image-input{
+    width: 300px;
+    margin-bottom: 20px;
+
+}
+
+
+.image-input-preview{
+    width: 300px;
+    height: 300px;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.image-input button{
+    margin-top: 5px;
+    width: 100%;
+}
+.image-input button:hover{
+    background-color: #7349E9;
+    color: white;
+}
+
+.image-input-preview img{
+    width: 290px;
+    height: 290px;
+    object-fit: contain;
+
+}

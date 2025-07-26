@@ -1,49 +1,18 @@
 import InputField from '../../components/InputFeild/InputField';
-import Notification from '../../components/Notification/Notification';
+import NotificationBox from '../../components/NotificationBox/NotificationBox';
+import useFormHandler from '../../hooks/useFormHandler';
 import './Contact.css';
 
 import { React, useState } from 'react'
 
 export default function Contact() {
 
-    const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
-
-    const [message, setMessage] = useState({ type: "info", message: "", id:0 });
-
-
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        if (!formData.name || !formData.email || !formData.message) {
-            setMessage({type:"error", message:"Please fill All Fields!", id:Date.now()})
-            return
-
-        }
-
-        try{
-            const res = await fetch("https://samaksh-arts.onrender.com/api/v1/contact", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const result = await res.json();
-            setMessage({type:"success", message:"Form submitted successfully!", id:Date.now()})
-
-        }
-        catch{
-
-            setMessage({type:"error", message:result.error, id:Date.now()})
-        }
-
-
-    }
-
-    const handleChange = (e) => {
-        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-
-    }
+    const {formData, message, handleFormSubmit, handleChange} = useFormHandler({
+        initialData: { name: "", email: "", subject: "", message: "" },
+        submitUrl:"https://samaksh-arts.onrender.com/api/v1/contact",
+        submitMethod: "POST",
+        onSuccessMessage: "Form submitted successfully!"
+    });
 
     return (
         <>
@@ -99,14 +68,14 @@ export default function Contact() {
                     />
 
                     <div className='center-in-div'>
-                        <button>Submit</button>
+                        <button type='submit'>Submit</button>
                     </div>
 
 
                 </form>
 
                 {message.message && (
-                    <Notification key={message.id} type={message.type} message={message.message} />
+                    <NotificationBox key={message.id} type={message.type} message={message.message} />
                 )}
 
             </div>

@@ -4,6 +4,12 @@
     flex: 1;
     margin-bottom: 20px;
 }
+
+.input-field label{
+  font-size: 18px; 
+font-style: bold;
+margin-bottom: 2px;
+}
 .input-field input, textarea{
     padding: 15px;
     background-color: rgb(51, 51, 51);
