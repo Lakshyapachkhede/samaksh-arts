@@ -12,6 +12,9 @@ const paintingSchema = new mongoose.Schema({
     imageId: {
         type: String,
     },
+    description:{
+        type: String,
+    },
     height: {
         type: Number,
     },
@@ -21,15 +24,6 @@ const paintingSchema = new mongoose.Schema({
     unit: {
         type: String,
     },
-    isForSale: {
-        type: Boolean
-    },
-    price: {
-        type: Number
-    },
-    isAvailable:{
-        type: Boolean
-    }
 
 
 },
