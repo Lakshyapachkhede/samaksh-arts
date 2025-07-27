@@ -6,7 +6,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Contact from './pages/Contact/Contact';
 import { AdminLogin } from './pages/Admin/AdminLogin';
-import ProtectedRoute from './components/protectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 import Admin from './pages/Admin/Admin';
 import Paintings from './pages/Admin/Paintings';
 import Contacts from './pages/Admin/Contacts';
