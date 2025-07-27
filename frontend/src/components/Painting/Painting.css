@@ -2,9 +2,9 @@
     display: flex;
     /* justify-content: start; */
     /* align-items: center; */
-    /* flex-direction: column; */
     border: 2px solid white;
     margin: 20px 0 10px;
+
 }
 
 .admin-paintings-item img{
@@ -28,4 +28,14 @@
 
 .painting-item-right button{
     width: 100px;
+}
+
+@media only screen and (max-width:800px) {
+    .admin-paintings-item{
+        flex-direction: column;
+    }
+    .admin-paintings-item img{
+        width: 100%;
+        height: 100%;
+    }
 }

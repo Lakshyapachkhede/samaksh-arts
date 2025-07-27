@@ -26,7 +26,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>&copy; {new Date().getFullYear()} Samaksh Kushwaha. All rights Reserved</p>
+                <p>&copy; {new Date().getFullYear()} Samaksh Kushwaha</p>
                 <p>Designed with <i className="fa-solid fa-heart"></i> by <a href="https://lakshyapachkhede.github.io/Lakshyapachkhede/" target='_blank'>Lakshya Pachkhede</a></p>
                 <p></p>
             </div>

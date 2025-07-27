@@ -18,7 +18,7 @@ export const Gallery3d = () => {
                 {Object.entries(images).map(([path, src], index) => {
                     const name = path.split('/').pop();
                     return (
-                        <span style={{ '--i': index + 1 }}>
+                        <span key={index} style={{ '--i': index + 1 }}>
                             <img src={src} alt={name} />
                         </span>
                     );

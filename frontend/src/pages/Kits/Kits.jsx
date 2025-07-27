@@ -46,7 +46,7 @@ export default function Kits() {
 
 
 
-        <h1>My Kit</h1>
+        <h1 style={{ marginBottom: "20px" }}>My Kit</h1>
 
       <div className="kit-items">
 

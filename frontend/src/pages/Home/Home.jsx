@@ -7,7 +7,7 @@ function Home() {
 
     return (
         <>
-            <div className="pages-con">
+            <div className="pages-con" style={{overflowX:"hidden"}}>
                 <Gallery3d />
 
                 <div className="container">

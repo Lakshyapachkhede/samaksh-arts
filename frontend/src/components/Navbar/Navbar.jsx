@@ -1,8 +1,17 @@
 import './Navbar.css';
 import logo from "../../assets/logo.jpg";
 import { NavLink, Link } from 'react-router-dom';
+import { useState } from 'react';
+
 
 function Navbar() {
+
+  const [navOpen, setNavOpen] = useState(false);
+
+  
+
+
+
   return (
     <nav>
 
@@ -13,12 +22,14 @@ function Navbar() {
         Samaksh Arts
       </div>
 
+      <div onClick={()=>{setNavOpen(true);}}><i className="fa-solid fa-bars fa-2x navbar-icon"  style={{ color: "#ffffff" }}></i></div>
 
-      <ul>
-        <li><NavLink to="/" className={({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link"}>home</NavLink></li>
-        <li><NavLink to="/gallery" className={({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link"}>gallery</NavLink></li>
-        <li><NavLink to="/kit" className={({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link"}>my kit</NavLink></li>
-        <li><NavLink to="/contact" className={({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link"}>contact</NavLink></li>
+      <ul className={navOpen? "nav-bar-open": ""}>
+        <li><i className="fa-solid fa-xmark fa-2x navbar-icon" onClick={()=>{setNavOpen(false)}} style={{ color: "#ffffff" }}></i></li>
+        <li onClick={()=>{setNavOpen(false)}}><NavLink to="/" className={({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link"}>home</NavLink></li>
+        <li onClick={()=>{setNavOpen(false)}}><NavLink to="/gallery" className={({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link"}>gallery</NavLink></li>
+        <li onClick={()=>{setNavOpen(false)}}><NavLink to="/kit" className={({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link"}>my kit</NavLink></li>
+        <li onClick={()=>{setNavOpen(false)}}><NavLink to="/contact" className={({isActive}) => isActive ? "nav-link nav-link-active" : "nav-link"}>contact</NavLink></li>
       </ul>
 
 
