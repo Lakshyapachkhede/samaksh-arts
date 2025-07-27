@@ -29,9 +29,10 @@ async function getPaintingById(req, res) {
 // POST /api/v1/paintings
 async function createPainting(req, res) {
     try {
-        const { title, height, width, unit, isForSale, price, isAvailable } = req.body;
+        const { title, description, height, width, unit, isForSale, price, isAvailable } = req.body;
         const newPainting = new Painting({
             title,
+            description,
             imageUrl: req.file.path,
             imageId: req.file.filename,
             height,
