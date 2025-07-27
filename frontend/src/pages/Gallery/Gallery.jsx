@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './Gallery.css';
 import close from '../../assets/close.png'
 import loadingImg from '../../assets/loading.gif'
+import { useNavigate } from 'react-router-dom';
+
 
 export const Gallery = () => {
   const [paintings, setPaintings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://samaksh-arts.onrender.com/api/v1/paintings")
       .then(response => {
@@ -31,35 +32,16 @@ export const Gallery = () => {
 
   if (loading) return <div className="gallery"><img src={loadingImg} alt="loading..." className='loading' /></div>
 
-  const handleImageClick = (url) => {
-    console.log(url)
-    setSelectedImage(url)
+  const handleImageClick = (id) => {
+     navigate(`/gallery/${id}`);
   }
 
-  const closeImage = () => {
-    setSelectedImage(null);
-  }
+
 
   return (
     <><div className="gallery">
 
-      {selectedImage !== null && (
-
-        <>
-
-          <div className="img-full-con">
-            <div className="blur-overlay"></div>
-
-            <div className="close-btn" onClick={closeImage}><i className="fa-solid fa-xmark fa-2x" style={{ color: "#ffffff" }}></i></div>
-            <div className="img-full-con-wrap">
-              <img src={selectedImage} className='img-full' />
-
-
-            </div>
-          </div>
-        </>
-
-      )}
+      
 
 
 
@@ -69,7 +51,7 @@ export const Gallery = () => {
       <ul>
         {paintings.map(painting => {
           return (<li key={painting._id}>
-            <img src={painting.imageUrl} alt={painting.title} onClick={() => handleImageClick(painting.imageUrl)} />
+            <img src={painting.imageUrl} alt={painting.title} onClick={() => handleImageClick(painting._id)} />
           </li>);
         })}
       </ul>

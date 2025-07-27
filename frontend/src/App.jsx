@@ -12,6 +12,7 @@ import Paintings from './pages/Admin/Paintings';
 import Contacts from './pages/Admin/Contacts';
 import ManageKit from './pages/Admin/ManageKit';
 import AddOrUpdatePainting from './pages/Admin/AddOrUpdatePainting';
+import Painting from './components/Painting/Painting';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/gallery' element={<Gallery />} />
+          <Route path='/gallery/:id' element={<Painting />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/admin/login' element={<AdminLogin />} />
 

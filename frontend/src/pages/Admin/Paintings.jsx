@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import NotificationBox from '../../components/NotificationBox/NotificationBox';
 import { getToken } from '../../utils/token';
 import loadingImg from '../../assets/loading.gif'
+import { NavLink } from 'react-router-dom';
+import Painting from '../../components/Painting/Painting';
 
 
 export default function Paintings() {
@@ -67,31 +69,28 @@ export default function Paintings() {
         }
     }
 
+
     if (loading) return <div className="gallery"><img src={loadingImg} alt="loading..." className='loading' /></div>
 
 
     return (
         <>
-            <h1>Your Art Work</h1>
+            <div className='d-f'>
+                <h1 style={{ marginRight: "20px" }}>Your Art Work ({paintings.length})</h1>
+                <NavLink
+                    to={`/admin/paintings/form?action=create`}
+                >
+                    <button><i className="fa-solid fa-plus"></i></button>
+                </NavLink>
+
+            </div>
+
             <div className='admin-paintings-con'>
 
 
                 {paintings.map((painting) => {
                     return (
-                        <div key={painting._id} className='admin-paintings-item'>
-
-
-
-                            <img src={painting.imageUrl} alt={painting.title} />
-
-                            <div className="painting-item-right">
-
-                                <h2>{painting.title}</h2>
-                                <p>{painting.description}</p>
-                                <p className='text-pur'>{painting.width}x{painting.height} {painting.unit}</p>
-                                <button onClick={() => deletePainting(painting._id)}>Delete</button>
-                            </div>
-                        </div>
+                        <Painting key={painting._id} showButtons={true} painting={painting} onDelete={deletePainting} />
                     )
                 })}
 

@@ -1,0 +1,31 @@
+.admin-paintings-item{
+    display: flex;
+    /* justify-content: start; */
+    /* align-items: center; */
+    /* flex-direction: column; */
+    border: 2px solid white;
+    margin: 20px 0 10px;
+}
+
+.admin-paintings-item img{
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    background-color: #ccc;
+
+}
+
+.painting-item-right{
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text-pur{
+    color: #7349E9;
+}
+
+.painting-item-right button{
+    width: 100px;
+}

@@ -43,3 +43,6 @@ button:hover {
   background: white;
   color: black;
 }
+button:hover i{
+  color: black;
+}
