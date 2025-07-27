@@ -12,7 +12,7 @@ export default function Painting({ painting: propPainting, showButtons = false, 
     const [painting, setPainting] = useState(propPainting || null)
     const [loading, setLoading] = useState(!propPainting);
     const [showFull, setShowFull] = useState(false);
-const [message, setMessage] = useState({ message: "", type: "", id: 0 });
+    const [message, setMessage] = useState({ message: "", type: "", id: 0 });
 
 
 
@@ -44,7 +44,15 @@ const [message, setMessage] = useState({ message: "", type: "", id: 0 });
 
     if (loading) return <div className="gallery"><img src={loadingImg} alt="loading..." className='loading' /></div>
 
-    if (!painting) return <p>Painting not found.</p>;
+    if (!painting){
+    setMessage({
+        message: "Painting not found",
+        type:"error",
+        id: Date.now()
+    })
+
+    }
+        
 
     return (
         <>

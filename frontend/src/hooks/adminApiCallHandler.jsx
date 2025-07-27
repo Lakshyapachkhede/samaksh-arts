@@ -1,1 +1,0 @@
-const adminApiCallHandler = ({submitUrl, submitMethod}) => {};

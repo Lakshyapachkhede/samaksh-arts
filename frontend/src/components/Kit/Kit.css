@@ -1,0 +1,29 @@
+.kit-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+    border: 2px solid white;
+    width: 300px;
+
+}
+
+.kit-item img{
+    width: 296px;
+    height: 296px;
+    border-color: #efefef;
+    object-fit: cover;
+}
+
+.kit-item-right{
+    padding: 0 10px 10px;
+}
+
+.kit-item-right a{
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13.33px;
+    text-align: center;
+}

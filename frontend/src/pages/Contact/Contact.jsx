@@ -2,20 +2,36 @@ import InputField from '../../components/InputFeild/InputField';
 import NotificationBox from '../../components/NotificationBox/NotificationBox';
 import useFormHandler from '../../hooks/useFormHandler';
 import './Contact.css';
-
+import loadingImg from '../../assets/loading.gif'
+import { useNavigate } from 'react-router-dom'
 import { React, useState } from 'react'
 
 export default function Contact() {
 
-    const {formData, message, handleFormSubmit, handleChange} = useFormHandler({
+    const [loading, setLoading] = useState(false)
+  
+
+
+    const { formData, message, handleFormSubmit, handleChange } = useFormHandler({
         initialData: { name: "", email: "", subject: "", message: "" },
-        submitUrl:"https://samaksh-arts.onrender.com/api/v1/contact",
+        submitUrl: "https://samaksh-arts.onrender.com/api/v1/contact",
         submitMethod: "POST",
         onSuccessMessage: "Form submitted successfully!"
     });
 
+
+    const submitForm = async (e) => {
+        setLoading(true);
+        await handleFormSubmit(e)
+
+        setLoading(false);
+    }
+
+
+
     return (
-        <>
+        <div className="pages-con">
+
             <div className="container">
 
                 <div className='form-top'>
@@ -24,7 +40,7 @@ export default function Contact() {
                     <p>Feel free to reach out for commissions, collaborations, or just to say hello.</p>
                 </div>
 
-                <form onSubmit={handleFormSubmit}>
+                <form onSubmit={submitForm}>
 
                     <div className="form-row">
                         <InputField
@@ -52,6 +68,8 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         placeholder="Subject"
+                        required={true}
+
                     />
 
 
@@ -66,7 +84,14 @@ export default function Contact() {
                         required={true}
 
                     />
+                    {
+                        loading &&
+                        <div className='center-in-div'>
+                            <img src={loadingImg} alt="" className='loadingIcon' />
 
+                        </div>
+
+                    }
                     <div className='center-in-div'>
                         <button type='submit'>Submit</button>
                     </div>
@@ -79,7 +104,8 @@ export default function Contact() {
                 )}
 
             </div>
+        </div>
 
-        </>
+
     )
 }

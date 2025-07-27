@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import NotificationBox from '../../components/NotificationBox/NotificationBox';
 import useFormHandler from '../../hooks/useFormHandler';
 import ImageInput from '../../components/ImageInput/ImageInput';
@@ -14,7 +14,8 @@ export default function AddOrUpdatePainting() {
     const id = searchParams.get("id");
     const [painting, setPainting] = useState(null);
 
-    console.log(action);
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (action == "update" && id) {
@@ -36,8 +37,8 @@ export default function AddOrUpdatePainting() {
             height: painting?.height || "",
             width: painting?.width || "",
             unit: painting?.unit || "",
-            image:null
-      
+            image: null
+
         },
         submitUrl: action == "create" ? "https://samaksh-arts.onrender.com/api/v1/paintings/" : `https://samaksh-arts.onrender.com/api/v1/paintings/${id}`,
         submitMethod: action == "create" ? "POST" : "PATCH",
@@ -59,7 +60,13 @@ export default function AddOrUpdatePainting() {
         }
     }, [painting])
 
+    const submitForm = async (e) => {
+        setLoading(true);
+        await handleFormSubmit(e)
 
+        setLoading(false);
+        navigate("/gallery")
+    }
 
     return (
         <>
@@ -79,12 +86,12 @@ export default function AddOrUpdatePainting() {
                     <p>Add or Update Paintings for showing them on gallery.</p>
                 </div>
 
-                <form onSubmit={handleFormSubmit}>
+                <form onSubmit={submitForm}>
 
 
                     <div className='center-in-div'>
 
-                        <ImageInput required={action === 'create' ? true : false} name="image" onChange={handleChange}  />
+                        <ImageInput required={action === 'create' ? true : false} name="image" onChange={handleChange} />
 
                     </div>
 
@@ -96,7 +103,7 @@ export default function AddOrUpdatePainting() {
                         onChange={handleChange}
                         required={true}
                         placeholder="Enter Image Title"
-                       
+
 
                     />
 
@@ -110,7 +117,7 @@ export default function AddOrUpdatePainting() {
 
                         placeholder="Description of painting"
                         textArea={true}
-                       
+
 
                     />
 
@@ -121,7 +128,7 @@ export default function AddOrUpdatePainting() {
                             name="width"
                             value={formData.width}
                             onChange={handleChange}
-                        
+
                             placeholder="painting width"
                         />
 
@@ -130,7 +137,7 @@ export default function AddOrUpdatePainting() {
                             name="height"
                             value={formData.height}
                             onChange={handleChange}
-                   
+
 
                             placeholder="painting height"
                         />
@@ -141,14 +148,21 @@ export default function AddOrUpdatePainting() {
                             value={formData.unit}
                             name="unit"
                             onChange={handleChange}
-           
+
                             placeholder="unit"
                         />
 
                     </div>
 
 
+                    {
+                        loading &&
+                        <div className='center-in-div'>
+                            <img src={loadingImg} alt="" className='loadingIcon' />
 
+                        </div>
+
+                    }
 
                     <div className='center-in-div'>
                         <button type='submit'>Submit</button>

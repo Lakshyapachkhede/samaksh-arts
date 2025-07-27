@@ -52,3 +52,7 @@ nav ul li{
 .nav-link-active{
   text-decoration: underline !important;
 }
+
+@media only screen and max {
+  
+}

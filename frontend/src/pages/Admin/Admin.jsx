@@ -17,6 +17,9 @@ export default function Admin() {
                         <NavLink to="contacts" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                             <i className="fa-solid fa-address-book fa-lg"></i> Contacts
                         </NavLink>
+                        <NavLink to="logout" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                            <i className="fa-solid fa-arrow-right-from-bracket fa-lg"></i> Logout
+                        </NavLink>
 
                     </div>
 

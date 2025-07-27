@@ -74,7 +74,7 @@ export default function Paintings() {
 
 
     return (
-        <>
+        <div className='pages-con'>
             <div className='d-f'>
                 <h1 style={{ marginRight: "20px" }}>Your Art Work ({paintings.length})</h1>
                 <NavLink
@@ -104,6 +104,7 @@ export default function Paintings() {
                 <NotificationBox key={message.id} type={message.type} message={message.message} />
             )}
 
-        </>
+        </div>
+
     )
 }
