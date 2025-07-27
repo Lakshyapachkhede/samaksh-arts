@@ -1,13 +1,20 @@
 import InputField from '../../components/InputFeild/InputField';
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import useFormHandler from '../../hooks/useFormHandler';
 import NotificationBox from '../../components/NotificationBox/NotificationBox';
-import { storeToken } from '../../utils/token';
+import { storeToken, getToken } from '../../utils/token';
 import { useNavigate } from 'react-router-dom';
 
 
-export const AdminLogin = () => {
 
+export const AdminLogin = () => {
+  
+  useEffect(()=>{
+    if (getToken() !== null){
+      navigate("/admin/");
+    }
+  }, []);
+  
   const { formData, message, handleFormSubmit, handleChange } = useFormHandler({
     initialData: { username: "", password: "", },
     submitUrl: "https://samaksh-arts.onrender.com/auth/login",
