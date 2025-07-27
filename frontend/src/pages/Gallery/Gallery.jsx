@@ -19,7 +19,6 @@ export const Gallery = () => {
         return response.json();
       })
       .then(data => {
-        console.log(data)
         setPaintings(data);
         setLoading(false);
       })

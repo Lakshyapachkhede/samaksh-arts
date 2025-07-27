@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samaksh-arts.vercel.app/sitemap.xml

@@ -64,8 +64,6 @@ export default function AddOrUpdatePainting() {
         setLoading(true);
         await handleFormSubmit(e)
 
-        console.log(formData.description)
-
         setLoading(false);
         navigate("/gallery")
     }

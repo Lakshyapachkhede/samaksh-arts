@@ -54,7 +54,7 @@ export default function Kits() {
 
         {kits.map((kit) => {
           return (
-            <Kit key={kit._id} showButtons={false} kit={kit} onDelete={()=>{console.log("heoo")}} />
+            <Kit key={kit._id} showButtons={false} kit={kit} onDelete={()=>{}} />
           )
         })}
 
